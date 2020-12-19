@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+{% for post in posts %}
+    <div class="post">
+        <div class="date">
+            <p>{{ post.published_date }}</p>
+        </div>
+        <h1><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
+{% endblock %}
